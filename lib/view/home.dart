@@ -1,10 +1,9 @@
-import 'package:bizkoalo/customers.dart';
-import 'package:bizkoalo/products_and_services.dart';
-import 'package:bizkoalo/profile.dart';
-import 'package:bizkoalo/settings.dart';
+import 'package:bizkoalo/view/products_and_services.dart';
+import 'package:bizkoalo/view/profile.dart';
+import 'package:bizkoalo/view/settings.dart';
+import 'package:bizkoalo/view/customers.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Home extends StatelessWidget {
   final String caption;
@@ -18,7 +17,10 @@ class Home extends StatelessWidget {
         title: Text(caption),
         actions: <Widget>[
           IconButton(
-            icon: FaIcon(FontAwesomeIcons.userCircle),
+            icon: Icon(
+              Icons.account_circle,
+              color: Colors.white,
+            ),
             onPressed: () {
               Navigator.push(
                   context,
@@ -28,33 +30,27 @@ class Home extends StatelessWidget {
           )
         ],
       ),
-
       body: Container(
         child: Column(
           children: [
             // for (var i in text)
             ListTile(
-              title: Text('samishka sdfs s df s sf sfs sdfsdf sdf'),
+              title: Text('samishka'),
               leading: Wrap(
-                spacing: 5, // space between two icons
+                spacing: 12, // space between two icons
                 children: <Widget>[
                   IconButton(
-                    icon: FaIcon(FontAwesomeIcons.clone),
+                    icon: Icon(Icons.gamepad),
                     tooltip: 'Increase volume by 10',
                     onPressed: () {},
                   ), // icon-1
                   IconButton(
-                    icon: FaIcon(FontAwesomeIcons.paperPlane),
+                    icon: Icon(Icons.gamepad),
                     tooltip: 'Increase volume by 10',
                     onPressed: () {},
                   ), // icon-1
                   IconButton(
-                    icon: FaIcon(FontAwesomeIcons.trashAlt),
-                    tooltip: 'Increase volume by 10',
-                    onPressed: () {},
-                  ), // icon-1
-                  IconButton(
-                    icon: FaIcon(FontAwesomeIcons.arrowAltCircleDown),
+                    icon: Icon(Icons.gamepad),
                     tooltip: 'Increase volume by 10',
                     onPressed: () {},
                   ) // icon-1
@@ -64,24 +60,13 @@ class Home extends StatelessWidget {
           ],
         ),
       ),
-
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {},
         label: Text('New Quatation'),
         icon: Icon(Icons.add),
         backgroundColor: Colors.blue,
       ),
-
-      // floatingActionButton: FloatingActionButton.extended(
-      //   child: Icon(Icons.add),
-      //   onPressed: () {
-      //     print('Clicked');
-      //   },
-      //    label: Text('New Quatation'),
-      // ),
-
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-
       drawer: Drawer(
           child: ListView(
         padding: EdgeInsets.zero,
@@ -92,7 +77,7 @@ class Home extends StatelessWidget {
           ),
           ListTile(
             title: Text("Customers"),
-            leading: FaIcon(FontAwesomeIcons.users),
+            leading: Icon(Icons.supervisor_account, color: Colors.blue),
             onTap: () {
               Navigator.push(
                   context,
@@ -102,7 +87,7 @@ class Home extends StatelessWidget {
           ),
           ListTile(
             title: Text("Product and Service"),
-            leading: FaIcon(FontAwesomeIcons.briefcase),
+            leading: Icon(Icons.business_center, color: Colors.blue),
             onTap: () {
               Navigator.push(
                   context,
@@ -114,7 +99,7 @@ class Home extends StatelessWidget {
           ),
           ListTile(
             title: Text("Profile"),
-            leading: FaIcon(FontAwesomeIcons.solidUserCircle),
+            leading: Icon(Icons.account_circle, color: Colors.blue),
             onTap: () {
               Navigator.push(
                   context,
@@ -125,7 +110,7 @@ class Home extends StatelessWidget {
           ),
           ListTile(
             title: Text("Settings"),
-            leading: FaIcon(FontAwesomeIcons.cog),
+            leading: Icon(Icons.settings, color: Colors.blue),
             onTap: () {
               Navigator.push(
                   context,

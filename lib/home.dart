@@ -9,8 +9,84 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class Home extends StatelessWidget {
   final String caption;
   // List<int> text = [1, 2, 3, 4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
-  final List<int> colorCodes = <int>[600, 500, 100];
+  // final List<int> colorCodes = <int>[600, 500, 100];
   Home({Key key, this.caption}) : super(key: key);
+final _scaffoldKey = GlobalKey<ScaffoldState>(); 
+
+
+
+  createAlertDialog(BuildContext context) {
+    TextEditingController customController = TextEditingController();
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('sdfsd'),
+            content: TextField(
+              controller: customController,
+            ),
+            actions: <Widget>[
+              MaterialButton(
+                elevation: 5.0,
+                child: Text('Submit'),
+                onPressed: () {
+                  Navigator.of(context).pop(customController.text.toString());
+                },
+              )
+            ],
+          );
+        });
+  }
+
+  deleteQuatation(BuildContext context) {
+    // TextEditingController customController = TextEditingController();
+    Widget cancelButton = FlatButton(
+      child: Text("Yes"),
+      onPressed: () {},
+    );
+    Widget continueButton = FlatButton(
+      child: Text("No"),
+      onPressed: () {},
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Are you sure", textAlign: TextAlign.center),
+      content: Text("you want to delete?", textAlign: TextAlign.center),
+      actions: [
+        cancelButton,
+        continueButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+    // return showDialog(
+    //     context: context,
+    //     builder: (context) {
+    //       return AlertDialog(
+    //         title: Text('sdfsd'),
+    //         content: TextField(
+    //           controller: customController,
+    //         ),
+    //         actions: <Widget>[
+    //           MaterialButton(
+    //             elevation: 5.0,
+    //             child: Text('Submit'),
+    //             onPressed: () {
+    //               Navigator.of(context).pop(customController.text.toString());
+    //             },
+    //           )
+    //         ],
+    //       );
+    //     });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,24 +110,30 @@ class Home extends StatelessWidget {
           children: [
             // for (var i in text)
             ListTile(
-              title: Text('samishka sdfs s df s sf sfs sdfsdf sdf'),
+              title: Text('samishka sdfs s df s sf samishk sdf'),
               leading: Wrap(
-                spacing: 5, // space between two icons
+                spacing: 1, // space between two icons
                 children: <Widget>[
                   IconButton(
                     icon: FaIcon(FontAwesomeIcons.clone),
                     tooltip: 'Increase volume by 10',
-                    onPressed: () {},
+                    onPressed: () {
+                      createAlertDialog(context);
+                    },
                   ), // icon-1
                   IconButton(
                     icon: FaIcon(FontAwesomeIcons.paperPlane),
-                    tooltip: 'Increase volume by 10',
-                    onPressed: () {},
+                    tooltip: 'Increase volume by 1d0',
+                    onPressed: () {
+                      _displaySnackBar(context);
+                    },
                   ), // icon-1
                   IconButton(
                     icon: FaIcon(FontAwesomeIcons.trashAlt),
                     tooltip: 'Increase volume by 10',
-                    onPressed: () {},
+                    onPressed: () {
+                      deleteQuatation(context);
+                    },
                   ), // icon-1
                   IconButton(
                     icon: FaIcon(FontAwesomeIcons.arrowAltCircleDown),
@@ -104,11 +186,14 @@ class Home extends StatelessWidget {
             title: Text("Product and Service"),
             leading: FaIcon(FontAwesomeIcons.briefcase),
             onTap: () {
-              Navigator.push(
-                  context,
-                  PageTransition(
-                      type: PageTransitionType.fade,
-                      child: ProductsAnServices()));
+              //  Scaffold.of(context).showSnackBar(SnackBar(
+              //     content: Text('Hello!'),
+              //   ));
+              // Navigator.push(
+              //     context,
+              //     PageTransition(
+              //         type: PageTransitionType.fade,
+              //         child: ProductsAnServices()));
               // Navigator.pop(context);
             },
           ),
@@ -138,6 +223,27 @@ class Home extends StatelessWidget {
     );
   }
 }
+
+_displaySnackBar(BuildContext context) {
+  final snackBar = SnackBar(content: Text('Are you talkin\' to me?'));
+  Scaffold(
+    appBar: AppBar(
+      title: Text("$snackBar"),
+    ),
+    body: Builder(
+      builder: (context) => Center(
+        child: RaisedButton(
+          color: Colors.pink,
+          textColor: Colors.white,
+          onPressed: () => _displaySnackBar(context),
+          child: Text('Display SnackBar'),
+        ),
+      ),
+    ),
+  );
+}
+
+class Context {}
 
 // class _MyHomePageState extends State<MyHomePage> {
 //   @override

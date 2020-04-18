@@ -1,7 +1,7 @@
+import 'package:bizkoalo/customers.dart';
 import 'package:bizkoalo/view/products_and_services.dart';
 import 'package:bizkoalo/view/profile.dart';
 import 'package:bizkoalo/view/settings.dart';
-import 'package:bizkoalo/view/customers.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
